@@ -20,10 +20,12 @@ class transmission::params {
       $pid_file       = undef
       $package_list   = [ 'transmission-cli', 'transmission-daemon' ]
       $service_name   = 'transmission-daemon'
-      $conf_dir       = '/var/lib/transmission/.config/transmission/'
+      $conf_dir       = '/var/lib/transmission/.config/transmission'
       $shell          = '/sbin/nologin'
       $init_file      = '/etc/sysconfig/transmission-daemon'
       $init_template  = 'transmission/sysconfig.erb'
+      $user           = 'transmission'
+      $group          = 'transmission'
     }
     'Debian': {
       $download_dir   = '/var/lib/transmission-daemon/downloads'
@@ -37,6 +39,9 @@ class transmission::params {
       $init_template  = 'transmission/default.erb'
       $user           = 'debian-transmission'
       $group          = 'debian-transmission'
+    }
+    default: {
+      fail("${module_name} is not supported on ${::osfamily}")
     }
   }
 

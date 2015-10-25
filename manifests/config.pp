@@ -7,7 +7,7 @@ class transmission::config {
   if $transmission::merged_settings['incomplete-dir-enabled'] {
     validate_absolute_path($transmission::merged_settings['incomplete-dir'])
     file { $transmission::merged_settings['incomplete-dir']:
-      ensure  => 'directory',
+      ensure => 'directory',
     }
   }
 
@@ -19,7 +19,7 @@ class transmission::config {
   }
 
   file { $transmission::merged_settings['download-dir']:
-    ensure  => 'directory',
+    ensure => 'directory',
   }
 
   file { 'transmission_temp_settings':
@@ -30,9 +30,9 @@ class transmission::config {
   }
 
   file { $transmission::params::init_file:
-    ensure   => 'file',
-    owner    => 'root',
-    group    => '0',
+    ensure  => 'file',
+    owner   => 'root',
+    group   => '0',
     content => template($transmission::params::init_template),
   }
 }

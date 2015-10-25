@@ -1,7 +1,4 @@
 # This file is managed by Puppet
-# TRANSMISSION_HOME="<%= scope.lookupvar('transmission::conf_dir') %>"
-# DAEMON_USER="<%= scope.lookupvar('transmission::user') %>"
-# DAEMON_ARGS="-T --blocklist -g $TRANSMISSION_HOME/.config/transmission-daemon"
-<%- unless scope.lookupvar('transmission::startup_opts').empty? -%>
-DAEMON_ARGS="<%= scope.lookupvar('transmission::startup_opts').join(' ') %>"
-<%- end -%>
+TRANSMISSION_HOME="<%= scope.lookupvar('transmission::conf_dir') %>"
+DAEMON_USER="<%= scope.lookupvar('transmission::user') %>"
+DAEMON_ARGS="-g $TRANSMISSION_HOME <%= scope.lookupvar('transmission::startup_opts').join(' ') %>"
