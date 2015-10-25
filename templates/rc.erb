@@ -1,0 +1,8 @@
+# Managed by Puppet
+transmission_enable="<%= scope.lookupvar('transmission::service_enable') ? 'YES' : 'NO' %>"
+transmission_conf_dir="<%= scope.lookupvar('transmission::conf_dir') %>"
+transmission_user="<%= scope.lookupvar('transmission::user') %>"
+transmission_download_dir="<%= scope.lookupvar('transmission::merged_settings')['download-dir'] %>"
+<%- unless scope.lookupvar('transmission::startup_opts').empty? -%>
+transmission_flags="<%= scope.lookupvar('transmission::startup_opts').join(' ') %>"
+<%- end -%>

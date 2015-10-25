@@ -1,0 +1,10 @@
+<%- require 'json' -%>
+<%- options = scope.lookupvar('transmission::merged_settings') -%>
+<%- ############################################################ -%>
+<%- # Trying to match this up with Transmission's settings.json  -%>
+<%- # Transmission indents the json by 4 spaces and integers are -%>
+<%- # not quoted.  If they get quoted, transmission seems to     -%>
+<%- # discard them and set them to defaults                      -%>
+<%- ############################################################ -%>
+<%- hash = JSON.pretty_generate options, :indent => '    ' -%>
+<%= hash.gsub(/"(\d+)"/, '\1') %>

@@ -1,0 +1,4 @@
+# This file is managed by Puppet
+ENABLE_DAEMON=1
+CONFIG_DIR="<%= scope.lookupvar('transmission::conf_dir') %>"
+OPTIONS="--config-dir $CONFIG_DIR <%= scope.lookupvar('transmission::startup_opts').join(' ') %>"

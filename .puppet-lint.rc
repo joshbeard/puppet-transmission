@@ -1,0 +1,5 @@
+--fail-on-warnings
+--with-filename
+--no-80chars-check
+--no-documentation-check
+--no-class_inherits_from_params_class-check
