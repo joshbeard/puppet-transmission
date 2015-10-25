@@ -6,5 +6,5 @@
 <%- # not quoted.  If they get quoted, transmission seems to     -%>
 <%- # discard them and set them to defaults                      -%>
 <%- ############################################################ -%>
-<%- hash = JSON.pretty_generate options, :indent => '    ' -%>
+<%- hash = JSON.pretty_generate options.sort.to_h, :indent => '    ' -%>
 <%= hash.gsub(/"(\d+)"/, '\1') %>
