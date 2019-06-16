@@ -2,3 +2,8 @@
 TRANSMISSION_HOME="<%= scope.lookupvar('transmission::conf_dir') %>"
 DAEMON_USER="<%= scope.lookupvar('transmission::user') %>"
 DAEMON_ARGS="-g $TRANSMISSION_HOME <%= scope.lookupvar('transmission::startup_opts').join(' ') %>"
+<%- unless scope.lookupvar('transmission::init_opts').empty? -%>
+<%-   scope.lookupvar('transmission::init_opts').each do |k,v| -%>
+<%= k %>="<%= v %>"
+<%-   end -%>
+<%- end -%>

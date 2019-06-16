@@ -6,3 +6,8 @@ transmission_download_dir="<%= scope.lookupvar('transmission::merged_settings')[
 <%- unless scope.lookupvar('transmission::startup_opts').empty? -%>
 transmission_flags="<%= scope.lookupvar('transmission::startup_opts').join(' ') %>"
 <%- end -%>
+<%- unless scope.lookupvar('transmission::init_opts').empty? -%>
+<%-   scope.lookupvar('transmission::init_opts').each do |k,v| -%>
+<%= k %>="<%= v %>"
+<%-   end -%>
+<%- end -%>

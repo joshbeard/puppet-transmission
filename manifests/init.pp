@@ -17,6 +17,7 @@ class transmission (
   $service_enable = true,
   $settings       = {},
   $startup_opts   = [],
+  $init_opts      = {},
 ) inherits transmission::params {
 
   validate_absolute_path($conf_dir)

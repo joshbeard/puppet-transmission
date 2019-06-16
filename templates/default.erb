@@ -2,3 +2,8 @@
 ENABLE_DAEMON=1
 CONFIG_DIR="<%= scope.lookupvar('transmission::conf_dir') %>"
 OPTIONS="--config-dir $CONFIG_DIR <%= scope.lookupvar('transmission::startup_opts').join(' ') %>"
+<%- unless scope.lookupvar('transmission::init_opts').empty? -%>
+<%-   scope.lookupvar('transmission::init_opts').each do |k,v| -%>
+<%= k %>="<%= v %>"
+<%-   end -%>
+<%- end -%>
